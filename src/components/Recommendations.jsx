@@ -3,25 +3,25 @@ import React from 'react'
 const Recommendations = ({ risks }) => {
   const getRecommendations = (risks) => {
     const recs = []
-    
+
     if (risks.heart > 50) {
       recs.push("🏃‍♂️ Walk 30min daily → -15% heart risk")
       recs.push("💧 Drink 3L water daily")
     }
-    
+
     if (risks.diabetes > 50) {
       recs.push("🥗 Eat 5 veggie servings → -20% diabetes risk")
       recs.push("🍭 Cut sugar <25g daily")
     }
-    
+
     if (risks.obesity > 30) {
       recs.push("🥗 High protein diet")
       recs.push("💪 Strength training 3x/week")
     }
-    
+
     recs.push("😴 Prioritize 7-8hrs sleep nightly")
     recs.push("🧘‍♀️ 10min meditation → -30% stress")
-    
+
     return recs.slice(0, 5)
   }
 
@@ -32,7 +32,7 @@ const Recommendations = ({ risks }) => {
       <h3 className="text-3xl font-bold text-white mb-8 flex items-center">
         🔥 Top Recommendations
       </h3>
-      
+
       <div className="grid md:grid-cols-2 gap-4">
         {recommendations.map((rec, i) => (
           <div key={i} className="group bg-white/20 backdrop-blur-sm p-6 rounded-2xl border border-white/30 hover:bg-white/30 transition-all hover:scale-105 hover:shadow-2xl">
@@ -47,3 +47,8 @@ const Recommendations = ({ risks }) => {
           </div>
         ))}
       </div>
+    </div>
+  )
+}
+
+export default Recommendations

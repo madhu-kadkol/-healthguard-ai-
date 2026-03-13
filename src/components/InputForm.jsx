@@ -7,7 +7,15 @@ const InputForm = ({ onSubmit, loading, demoData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    onSubmit(formData)
+    const numericData = {
+      age: Number(formData.age),
+      bmi: parseFloat(formData.bmi),
+      sleep: parseFloat(formData.sleep),
+      steps: Number(formData.steps),
+      stress: Number(formData.stress),
+      diet: Number(formData.diet)
+    }
+    onSubmit(numericData)
   }
 
   const loadDemo = () => {
@@ -72,25 +80,25 @@ const InputForm = ({ onSubmit, loading, demoData }) => {
               className="w-full p-4 bg-white/20 border border-white/30 rounded-2xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
               placeholder="65" required />
           </div>
-        </form>
 
-        <div className="flex flex-col sm:flex-row gap-4 mt-8">
-          <button
-            type="submit"
-            disabled={loading}
-            className="flex-1 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 px-8 rounded-2xl hover:from-emerald-600 hover:to-teal-700 transition-all shadow-2xl hover:shadow-emerald-500/25 disabled:opacity-50"
-          >
-            {loading ? 'Analyzing...' : '🔮 Predict My Risks'}
-          </button>
-          
-          <button
-            type="button"
-            onClick={loadDemo}
-            className="px-8 py-4 bg-white/20 backdrop-blur-sm text-white rounded-2xl hover:bg-white/30 transition-all border border-white/30"
-          >
-            ⚡ Load Demo Data
-          </button>
-        </div>
+          <div className="col-span-1 md:col-span-2 flex flex-col sm:flex-row gap-4 mt-2">
+            <button
+              type="submit"
+              disabled={loading}
+              className="flex-1 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 px-8 rounded-2xl hover:from-emerald-600 hover:to-teal-700 transition-all shadow-2xl hover:shadow-emerald-500/25 disabled:opacity-50"
+            >
+              {loading ? 'Analyzing...' : '🔮 Predict My Risks'}
+            </button>
+            
+            <button
+              type="button"
+              onClick={loadDemo}
+              className="px-8 py-4 bg-white/20 backdrop-blur-sm text-white rounded-2xl hover:bg-white/30 transition-all border border-white/30"
+            >
+              ⚡ Load Demo Data
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   )
